@@ -1,58 +1,69 @@
 /* ************************************************************ */
-// FEITO POR GABRIEL CIRQUEIRA
+//              FEITO POR GABRIEL CIRQUEIRA
 /* ************************************************************ */
 
+        var btnS = document.getElementById("somar");
+        var btnM = document.getElementById("menos");
+        var btnMULT = document.getElementById("MULT");
+        var btnDIV = document.getElementById("DIV");
+        var btnNome = document.getElementById("enviar_nome");
 
-var btnS = document.getElementById("somar");
-var btnM = document.getElementById("menos");
-var btnMULT = document.getElementById("MULT");
+        btnS.addEventListener("click", function () {
+            calcular("somar");
+        });
 
-btnS.addEventListener("click", function () {
+        btnM.addEventListener("click", function () {
+            calcular("menos");
+        });
 
-    var number1 = document.getElementById("number1").value;
-    var number2 = document.getElementById("number2").value;
-    if (number1 == null || number2 == null) {
-        window.alert("Preencha os campos s");
-        return;
-    }
-    imprimir_resultado("somar", number1, number2);
-});
+        btnMULT.addEventListener("click", function () {
+            calcular("MULT");
+        });
 
-btnM.addEventListener("click", function () {
+        btnDIV.addEventListener("click", function () {
+            calcular("DIV");
+        });
 
-    var number1 = document.getElementById("number1").value;
-    var number2 = document.getElementById("number2").value;
-    if (number1 == null || number2 == null) {
-        window.alert("Preencha os campos m");
-        return;
-    }
-    imprimir_resultado("menos", number1, number2);
-});
+        function calcular(operacao) {
+            var number1 = document.getElementById("number1").value;
+            var number2 = document.getElementById("number2").value;
 
-btnMULT.addEventListener("click", function () {
+            if (number1 === "" || number2 === "") {
+                window.alert("Preencha os campos corretamente.");
+                return;
+            }
 
-    var number1 = document.getElementById("number1").value;
-    var number2 = document.getElementById("number2").value;
-    if (number1 == null || number2 == null) {
-        window.alert("Preencha os campos m");
-        return;
-    }
-    imprimir_resultado("MULT", number1, number2);
-});
+            imprimir_resultado(operacao, number1, number2);
+        }
 
-function imprimir_resultado(operacao, number1, number2) {
+        function imprimir_resultado(operacao, number1, number2) {
+            var resultado, msg;
 
-    if (operacao == "somar") {
-        var resultado = parseInt(number1) + parseInt(number2);
-        var msg = "A SOMA ENTRE " + number1 + " E " + number2 + "  = " + resultado;
-    } else if (operacao == "menos") {
-        var resultado = parseInt(number1) - parseInt(number2);
-        var msg = "A SUBTRAÇAÕ ENTRE " + number1 + " E " + number2 + "  =  " + resultado;
+            number1 = parseFloat(number1);
+            number2 = parseFloat(number2);
 
-    } else {
-        var resultado = parseInt(number1) * parseInt(number2);
-        var msg = "A MULTIPLICAÇÃO ENTRE " + number1 + " E " + number2 + "  =  " + resultado;
-    }
+            if (operacao == "somar") {
+                resultado = number1 + number2;
+                msg = `A SOMA ENTRE ${number1} E ${number2} = <b>${resultado}</b>`;
+            } else if (operacao == "menos") {
+                resultado = number1 - number2;
+                msg = `A SUBTRAÇÃO ENTRE ${number1} E ${number2} = <b>${resultado}</b>`;
+            } else if (operacao == "MULT") {
+                resultado = number1 * number2;
+                msg = `A MULTIPLICAÇÃO ENTRE ${number1} E ${number2} = <b>${resultado}</b>`;
+            } else if (operacao == "DIV") {
+                if (number2 === 0) {
+                    msg = "Não é possível dividir por zero.";
+                } else {
+                    resultado = number1 / number2;
+                    msg = `A DIVISÃO ENTRE ${number1} E ${number2} = <b> ${resultado} </b>`;
+                }
+            }
 
-    CampoResultado = document.getElementById("resultado").innerHTML = msg;
-}
+            document.getElementById("resultado").innerHTML = msg;
+        }
+
+        btnNome.addEventListener("click", function () {
+            var nome = document.getElementById("nome").value;
+            document.getElementById("nome-display").innerText = nome ? `Bem-vindo, ${nome}!` : window.alert("Preencha o capo nome!");
+        });
