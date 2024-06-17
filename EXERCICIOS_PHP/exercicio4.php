@@ -1,6 +1,4 @@
-<?php
-    // MS CODE --- GABRIEL CIRQUEIRA
-    // 4 – Escreva um algoritmo que receba um valor, calcule e mostre para o usuário 5% e 50% deste valor.
+<?php 
     function calculaPorcentagens($valor) {
         $cincoPorCento = $valor * 0.05;
         $cinquentaPorCento = $valor * 0.50;

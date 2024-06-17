@@ -1,7 +1,5 @@
-<?php
-    // MS CODE  GABRIEL CIRQUEIRA
-    // 8 – Escreva um algoritmo que receba um valor, calcule e mostre um desconto de 9%.
+<?php 
     function calculaDesconto9($valor) {
-        return $valor * 0.91;
+        return $valor * 0.90;
     }
     echo calculaDesconto9(100);
