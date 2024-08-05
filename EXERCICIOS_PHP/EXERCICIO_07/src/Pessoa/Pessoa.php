@@ -1,7 +1,6 @@
 <?php 
 
-namespace App\App;
-use App\App\CpfCnpj;
+namespace App\Pessoa;
 
 abstract class Pessoa {
     protected string $nome;

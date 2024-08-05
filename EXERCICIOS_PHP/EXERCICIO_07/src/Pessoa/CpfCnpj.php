@@ -1,14 +1,18 @@
-<?php 
+<?php
 
-namespace App\App;
-class CpfCnpj {
+namespace App\Pessoa;
 
-    public static function removerCaracteres($documento) {
+class CpfCnpj
+{
+
+    public static function removerCaracteres($documento): string
+    {
         return str_replace(['.', '-', '/'], '', $documento);
     }
 
-    public static function formatarDocumento($documento) {
-        
+    public static function formatarDocumento($documento): string
+    {
+
         if (strlen($documento) === 11) {
             $documento = substr_replace($documento, '.', 3, 0);
             $documento = substr_replace($documento, '.', 7, 0);
